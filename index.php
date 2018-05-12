@@ -1,7 +1,7 @@
 <?php
-include 'Produkt.class.php';
-$csv = "5365;9500733054895;Zabawka dmuchana robot 1610G;76.0000;szt.;2.2900;2.8200;PODSTAWOWA;";
-$p = new Produkt($csv);
+include 'Baza.class.php';
+$b = new Baza("towary.csv", "wyjscie.csv");
+$b->otworzPlik();
 echo "<pre>";
-var_dump($p);
- ?>
+var_dump($b);
+?>
