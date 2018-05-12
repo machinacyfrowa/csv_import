@@ -36,12 +36,17 @@ class Produkt {
       $this->ean = $pola[1];
       $this->nazwa = $pola[2];
       $this->nazwa = iconv("windows-1250", "UTF-8", $this->nazwa);
-      if(intval($pola[3]) > 3)
-        $this->ilosc = $pola[3] - 1;
-      else $this->ilosc = 0;
+
       $this->cena = floatval($pola[6]);
       $this->producent = $pola[7];
       $this->producent = iconv("windows-1250", "UTF-8", $this->producent);
+      //przepis stany dla firmy aleksander, zmodyfikuj dla innych
+      if($this->producent != "ALEXANDER") {
+        if(intval($pola[3]) > 3)
+          $this->ilosc = $pola[3] - 1;
+        else $this->ilosc = 0;
+      } else $this->ilosc = $pola[3];
+
       $this->obliczCene();
     }
   }
@@ -49,6 +54,7 @@ class Produkt {
     if(isset($this->narzuty[$this->producent]))
       $this->cenaDetaliczna = $this->cena * (1 + $this->narzuty[$this->producent]);
     else $this->cenaDetaliczna = $this->cena * (1 + $this->domyslnyNarzut);
+    $this->cenaDetaliczna = round($this->cenaDetaliczna, 2);
   }
   public function produktPrawidlowy() { //zwraca true/false wg wymagan klienta
     //sprwdzamy poprawnosc kodu ean
@@ -60,6 +66,10 @@ class Produkt {
       return false;
     }
     return true;
+  }
+  public function zwrocProdukt() {
+    $p = Array($this->ean, $this->nazwa, $this->ilosc, $this->cenaDetaliczna);
+    return $p;
   }
 }
 ?>

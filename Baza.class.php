@@ -24,7 +24,11 @@ class Baza
     return count($this->produkty);
   }
   function zapiszPlik() {
-    
+    $plik = fopen($this->plikZapisywany, "w");
+    foreach ($this->produkty as $produkt) {
+      fputcsv($plik, $produkt->zwrocProdukt());
+    }
+    fclose($plik);
   }
 }
 
