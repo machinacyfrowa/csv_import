@@ -6,6 +6,7 @@ class Produkt {
   private $cena;
   private $cenaDetaliczna;
   private $producent;
+  private $producenciUsunieci = Array("ADAR", "AGA", "ALIGA", "AMEET", "ANET");
   private $narzuty = Array("ALEXANDER" => 0.2,
                             "ADAMIGO" => 0.2,
                             "AMI-PROMATEK" => 0.2,
@@ -31,6 +32,17 @@ class Produkt {
     if(isset($this->narzuty[$this->producent]))
       $this->cenaDetaliczna = $this->cena * (1 + $this->narzuty[$this->producent]);
     else $this->cenaDetaliczna = $this->cena * (1 + $this->domyslnyNarzut);
+  }
+  public function produktPrawidlowy() { //zwraca true/false wg wymagan klienta
+    //sprwdzamy poprawnosc kodu ean
+    if (!preg_match("/^[0-9]{13}$/", $this->ean)) { //sprawdz czyma 13 cyfr
+        return false;
+    }
+    //sprawdzamy producenta
+    if(array_search($this->producent, $this->producenciUsunieci)) {
+      return false;
+    }
+    return true;
   }
 }
 ?>

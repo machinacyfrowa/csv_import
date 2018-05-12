@@ -16,9 +16,12 @@ class Baza
     while (!feof($plik)) {
       $linia = fgets($plik);
       $p = new Produkt($linia);
-      array_push($this->produkty, $p);
+      if($p->produktPrawidlowy()) array_push($this->produkty, $p);
     }
     fclose($plik);
+  }
+  function ileProduktow() {
+    return count($this->produkty);
   }
 }
 
