@@ -6,14 +6,27 @@ class Produkt {
   private $cena;
   private $cenaDetaliczna;
   private $producent;
-  private $producenciUsunieci = Array("ADAR", "AGA", "ALIGA", "AMEET", "ANET");
+  private $producenciUsunieci = Array("ADAR", "AGA", "ALIGA", "AMEET", "ANET",
+                                      "ANPITO", "ANTON", "ARTYK", "BREWIS", "CZEMPOL",
+                                    "GONZO", "INTERKOBO", "INTEX", "JAFI", "JANEX",
+                                  "JASTRZĄBEK", "KLEIN", "KAMA", "LAZUR", "LEGO",
+                                  "LEWANDOWSKI", "LITTLE TIKES", "LIWONA", "MALIMAS",
+                                "MARGOS", "METREX", "MIDEX", "MIZ", "MONIKA", "MSTTOYS",
+                              "PAW", "PIEROT", "POLSIRHURT", "PRESTIGE", "PROPEX", "REX",
+                            "ROSA", "STARLET", "VIKING", "WAKART");
   private $narzuty = Array("ALEXANDER" => 0.2,
                             "ADAMIGO" => 0.2,
                             "AMI-PROMATEK" => 0.2,
                             "EGMONT" => 0.2,
                             "GRANNA" => 0.2,
                             "JAWA" => 0.2,
-                            "FOKSAL" => 0.2);
+                            "FOKSAL" => 0.2,
+                            "REBEL" => 0.2,
+                            "REBEL-VCUBE" => 0.2,
+                            "SIMBA" => 0.2,
+                            "TACTIC" => 0.2,
+                            "WINNING" => 0.2,
+                            "TREFT" => 0.2);
   private $domyslnyNarzut = 0.3;
 
   public function __construct($linia) { //linia z pliku csv
