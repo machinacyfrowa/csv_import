@@ -23,6 +23,9 @@ class Baza
   function ileProduktow() {
     return count($this->produkty);
   }
+  function zapiszPlik() {
+    
+  }
 }
 
 ?>

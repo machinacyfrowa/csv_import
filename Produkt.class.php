@@ -31,15 +31,19 @@ class Produkt {
 
   public function __construct($linia) { //linia z pliku csv
     $pola = explode(";",$linia);
-    //$pola[0] to id hurtowni
-    $this->ean = $pola[1];
-    $this->nazwa = $pola[2];
-    if(intval($pola[3]) > 3)
-      $this->ilosc = $pola[3] - 1;
-    else $this->ilosc = 0;
-    $this->cena = floatval($pola[6]);
-    $this->producent = $pola[7];
-    $this->obliczCene();
+    if(count($pola) == 9) {
+      //$pola[0] to id hurtowni
+      $this->ean = $pola[1];
+      $this->nazwa = $pola[2];
+      $this->nazwa = iconv("windows-1250", "UTF-8", $this->nazwa);
+      if(intval($pola[3]) > 3)
+        $this->ilosc = $pola[3] - 1;
+      else $this->ilosc = 0;
+      $this->cena = floatval($pola[6]);
+      $this->producent = $pola[7];
+      $this->producent = iconv("windows-1250", "UTF-8", $this->producent);
+      $this->obliczCene();
+    }
   }
   public function obliczCene() {
     if(isset($this->narzuty[$this->producent]))
