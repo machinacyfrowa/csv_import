@@ -54,7 +54,7 @@ class Produkt {
     if(isset($this->narzuty[$this->producent]))
       $this->cenaDetaliczna = $this->cena * (1 + $this->narzuty[$this->producent]);
     else $this->cenaDetaliczna = $this->cena * (1 + $this->domyslnyNarzut);
-    $this->cenaDetaliczna = round($this->cenaDetaliczna, 2);
+    $this->cenaDetaliczna = round($this->cenaDetaliczna);
   }
   public function produktPrawidlowy() { //zwraca true/false wg wymagan klienta
     //sprwdzamy poprawnosc kodu ean
@@ -68,7 +68,7 @@ class Produkt {
     return true;
   }
   public function zwrocProdukt() {
-    $p = Array($this->ean, $this->nazwa, $this->ilosc, $this->cenaDetaliczna);
+    $p = Array($this->ean, $this->nazwa, $this->ilosc, $this->cenaDetaliczna, $this->producent, "producent", -1);
     return $p;
   }
 }

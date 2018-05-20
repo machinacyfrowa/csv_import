@@ -25,6 +25,8 @@ class Baza
   }
   function zapiszPlik() {
     $plik = fopen($this->plikZapisywany, "w");
+    $header = Array("sku", "name", "stock_quantity", "regular_price", "attribute1", "attribute1name", "status");
+    fputcsv($plik, $header);
     foreach ($this->produkty as $produkt) {
       fputcsv($plik, $produkt->zwrocProdukt());
     }
